@@ -1,0 +1,29 @@
+<div class="container">
+  <div *ngIf="!user" class="card">
+    <h6 class="card-header">Login with Google</h6>
+    <div class="card-block">
+      <h4 class="card-title">Not signed in</h4>
+      <p class="card-text">Sign in with</p>
+    </div>
+    <div class="card-block">
+      <!-- <button mat-flat-button type="button" (click)="signWithGoogle()" class="btn btn-danger">Login with Google</button> -->
+      <asl-google-signin-button mat-flat-button type="icon" size="large" (click)="signWithGoogle()"> </asl-google-signin-button>
+      <button mat-flat-button type="button" (click)="loginWithFacebook()" class="btn btn-primary btn-block">Signin with Facebook</button>
+    </div>
+  </div>
+  <div *ngIf="user" class="card">
+    <h6 class="card-header">Login with Google</h6>
+    <div class="card-block"></div>
+    <img *ngIf="user.photoUrl" src="{{user.photoUrl}}" alt="photo" class="card-img">
+    <div class="card-block">
+      <h4 class="card-title">{{user.name}}</h4>
+      <p class="card-text">{{user.email}}</p>
+      <p class="card-text">Loged in with: {{user.provider}}</p>
+    </div>
+    <div class="card-block">
+      <button mat-icon-button class="btn btn-social-icon" (click)="signOut()">
+        <span class="material-symbols-outlined">logout</span>
+      </button>
+    </div>
+  </div>
+</div>
